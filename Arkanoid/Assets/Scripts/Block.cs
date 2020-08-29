@@ -11,9 +11,12 @@ public class Block : MonoBehaviour
     private int numHits;
     public static int destructibleBlockNum = 0;
 
+    public int points;
+
     private SpriteRenderer spriteRenderer;
 
     SceneControl sceneControl;
+    Score score;
     AudioSource audioSource;
 
     void Start()
@@ -21,6 +24,8 @@ public class Block : MonoBehaviour
         numHits = 0;
 
         sceneControl = FindObjectOfType<SceneControl>();
+        score = FindObjectOfType<Score>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
@@ -49,6 +54,8 @@ public class Block : MonoBehaviour
         if (numHits >= maxHits)
         {
             destructibleBlockNum--;
+
+            score.addPoints(points);
 
             sceneControl.DestroyedBlock();
 

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOverControl : MonoBehaviour
 {
     private SceneControl sceneControl;
+    private HighScoreTable highScoreTable;
 
     private void Start()
     {

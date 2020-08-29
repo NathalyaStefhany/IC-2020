@@ -144,8 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: 21300002, guid: 36c4d90cd9b8eac44aaa3f871731c84f, type: 3}
-  explosionIni: {fileID: 0}
-  explosionEnd: {fileID: 0}
+  points: 30
 --- !u!82 &82302720250123786
 AudioSource:
   m_ObjectHideFlags: 0

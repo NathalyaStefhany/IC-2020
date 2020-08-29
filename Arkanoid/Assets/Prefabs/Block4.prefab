@@ -143,8 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites: []
-  explosionIni: {fileID: 0}
-  explosionEnd: {fileID: 0}
+  points: 0
 --- !u!82 &6913113246617357261
 AudioSource:
   m_ObjectHideFlags: 0

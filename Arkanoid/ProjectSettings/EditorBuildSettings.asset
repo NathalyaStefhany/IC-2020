@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e2d8afb59cc61be49bba806432e37870
   - enabled: 1
-    path: Assets/Scenes/GameDifficulty.unity
+    path: Assets/Scenes/NamePlayer.unity
     guid: a826e482adb98e94c845143def52a322
   - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: 19a0b92353cc9da47bae4630e24b8f57
-  - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 53d150104c1b5ec41807eba665b02734
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 3e80f08d405751c4a928b00a9ab29588
