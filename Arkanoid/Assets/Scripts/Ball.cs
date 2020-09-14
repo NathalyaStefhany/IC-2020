@@ -46,4 +46,9 @@ public class Ball : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    public void setGameStarted(bool gameStarted)
+    {
+        this.gameStarted = gameStarted;
+    }
 }

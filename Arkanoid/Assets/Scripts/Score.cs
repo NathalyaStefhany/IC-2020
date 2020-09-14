@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
 
     void Start()
     {
-        playerPoints = 0;
+        playerPoints = PlayerPrefs.GetInt("CurrentScore");
     }
 
     public void addPoints(int points)
@@ -28,5 +28,10 @@ public class Score : MonoBehaviour
         float posY = 0.01f * Screen.height;
 
         GUI.Label(new Rect(posX, posY, 200.0f, 200.0f), "SCORE: " + playerPoints);
+    }
+
+    public int getPlayerPoints()
+    {
+        return playerPoints;
     }
 }

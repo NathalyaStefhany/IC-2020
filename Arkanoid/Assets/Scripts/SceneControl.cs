@@ -6,10 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
+    private Lives lives;
+    private Score score;
+
+    public void Start()
+    {
+        lives = GameObject.FindObjectOfType<Lives>();
+        score = GameObject.FindObjectOfType<Score>();
+    }
+
     public void CallScenes(string nameScene)
     {
-        if(nameScene == "Level1")
+        if (nameScene == "Level1")
+        {
             PlayerPrefs.SetString("Level", "1");
+            PlayerPrefs.SetInt("Lives", 3);
+            PlayerPrefs.SetInt("CurrentScore", 0);
+        }
 
         SceneManager.LoadScene(nameScene);
     }
@@ -26,6 +39,11 @@ public class SceneControl : MonoBehaviour
             int level = Convert.ToInt32(PlayerPrefs.GetString("Level")) + 1;
             
             PlayerPrefs.SetString("Level", level.ToString());
+
+            Block.destructibleBlockNum = 0;
+
+            PlayerPrefs.SetInt("Lives", lives.getPlayerLives());
+            PlayerPrefs.SetInt("CurrentScore", score.getPlayerPoints());
 
             LoadNextLevel();
         }
