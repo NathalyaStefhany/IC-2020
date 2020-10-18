@@ -39,11 +39,10 @@ public class SceneControl : MonoBehaviour
             int level = Convert.ToInt32(PlayerPrefs.GetString("Level")) + 1;
             
             PlayerPrefs.SetString("Level", level.ToString());
-
-            Block.destructibleBlockNum = 0;
-
             PlayerPrefs.SetInt("Lives", lives.getPlayerLives());
             PlayerPrefs.SetInt("CurrentScore", score.getPlayerPoints());
+
+            Block.destructibleBlockNum = 0;
 
             LoadNextLevel();
         }

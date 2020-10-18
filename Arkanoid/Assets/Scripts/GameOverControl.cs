@@ -10,6 +10,7 @@ public class GameOverControl : MonoBehaviour
     private AddScore addScore;
     private Lives lives;
     private Ball ball;
+    private Score score;
 
     private void Start()
     {
@@ -17,19 +18,20 @@ public class GameOverControl : MonoBehaviour
         addScore = GameObject.FindObjectOfType<AddScore>();
         lives = GameObject.FindObjectOfType<Lives>();
         ball = GameObject.FindObjectOfType<Ball>();
+        score = GameObject.FindObjectOfType<Score>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bool gameOver = lives.TakeLife();
+        lives.TakeLife();
 
-        if (gameOver)
+        if (lives.getPlayerLives() == 0)
         {
             string name = PlayerPrefs.GetString("Name");
             int round = Convert.ToInt32(PlayerPrefs.GetString("Level"));
-            int points = Convert.ToInt32(PlayerPrefs.GetString("Points"));
+            int points = score.getPlayerPoints();
 
-            addScore.AddHighScoreEntry(name, round, points);
+            addScore.addHighScoreEntry(name, round, points);
 
             Block.destructibleBlockNum = 0;
 

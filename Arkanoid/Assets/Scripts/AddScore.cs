@@ -1,62 +1,66 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AddScore : MonoBehaviour
 {
-    public void AddHighScoreEntry(string name, int round, int score)
+    private HighScores highScores;
+
+    public void addHighScoreEntry(string name, int round, int score)
     {
         HighScoreEntry highScoreEntry = new HighScoreEntry { name = name, round = round, score = score };
 
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
         string json;
 
-        if (string.IsNullOrEmpty(jsonString) == true)
+        if (string.IsNullOrEmpty(jsonString))
         {
-            HighScores highScores = new HighScores();
+            highScores = new HighScores();
             highScores.highScoreEntryList = new List<HighScoreEntry>();
-
-            highScores.highScoreEntryList.Add(highScoreEntry);
-
-            json = JsonUtility.ToJson(highScores);
-
-            PlayerPrefs.SetString("HighScoreTable", json);
-            PlayerPrefs.Save();
         }
         else
+            highScores = JsonUtility.FromJson<HighScores>(jsonString);
+
+        highScores.highScoreEntryList.Add(highScoreEntry);
+
+        sortScore(highScores);
+
+        if (highScores.highScoreEntryList.Count > 5)
         {
-            HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
-
-            highScores.highScoreEntryList.Add(highScoreEntry);
-
-            highScores.highScoreEntryList.Sort(delegate (HighScoreEntry x, HighScoreEntry y)
-            {
-                if (x.score.CompareTo(y.score) == 0) return x.name.CompareTo(y.name);
-                return x.score.CompareTo(y.score) * -1;
-            });
-
-            if (highScores.highScoreEntryList.Count > 5)
-            {
-                highScores.highScoreEntryList.RemoveAt(5);
-            }
-
-            json = JsonUtility.ToJson(highScores);
-
-            PlayerPrefs.SetString("HighScoreTable", json);
-            PlayerPrefs.Save();
+            highScores.highScoreEntryList.RemoveAt(5);
         }
+
+        json = JsonUtility.ToJson(highScores);
+
+        PlayerPrefs.SetString("HighScoreTable", json);
+        PlayerPrefs.Save();
     }
 
-    public class HighScores
+    public void sortScore(HighScores highScores)
     {
-        public List<HighScoreEntry> highScoreEntryList;
+        highScores.highScoreEntryList.Sort(delegate (HighScoreEntry x, HighScoreEntry y)
+        {
+            if (x.score.CompareTo(y.score) == 0) return x.name.CompareTo(y.name);
+            return x.score.CompareTo(y.score) * -1;
+        });
     }
 
-    [System.Serializable]
-    public class HighScoreEntry
+    public HighScores getHighScores()
     {
-        public string name;
-        public int round;
-        public int score;
+        return highScores;
     }
+}
+
+public class HighScores
+{
+    public List<HighScoreEntry> highScoreEntryList;
+}
+
+[System.Serializable]
+public class HighScoreEntry
+{
+    public string name;
+    public int round;
+    public int score;
 }

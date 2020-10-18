@@ -25,18 +25,18 @@ public class HighScoreTable : MonoBehaviour
 
         if (string.IsNullOrEmpty(jsonString) == false)
         {
-            AddScore.HighScores highScores = JsonUtility.FromJson<AddScore.HighScores>(jsonString);
+            HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
 
             highScoreEntryTransformList = new List<Transform>();
 
-            foreach (AddScore.HighScoreEntry highScoreEntry in highScores.highScoreEntryList)
+            foreach (HighScoreEntry highScoreEntry in highScores.highScoreEntryList)
             {
                 CreateHighScoreEntryTransform(highScoreEntry, entryContainer, highScoreEntryTransformList);
             }
         }
     }
 
-    private void CreateHighScoreEntryTransform(AddScore.HighScoreEntry highScoreEntry, Transform container, List<Transform> transformList)
+    private void CreateHighScoreEntryTransform(HighScoreEntry highScoreEntry, Transform container, List<Transform> transformList)
     {
         float templateHeight = 100f;
 

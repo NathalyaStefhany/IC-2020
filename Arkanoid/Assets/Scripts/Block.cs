@@ -14,20 +14,19 @@ public class Block : MonoBehaviour
     public int points;
 
     private SpriteRenderer spriteRenderer;
-
-    SceneControl sceneControl;
-    Score score;
-    AudioSource audioSource;
+    private SceneControl sceneControl;
+    private Score score;
+    private AudioSource audioSource;
 
     void Start()
     {
-        numHits = 0;
-
         sceneControl = FindObjectOfType<SceneControl>();
         score = FindObjectOfType<Score>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+
+        numHits = 0;
 
         if (transform.CompareTag("Destructible"))
         {

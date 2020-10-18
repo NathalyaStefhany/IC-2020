@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int playerPoints;
+    private int playerPoints;
     public Font font;
 
     void Start()
@@ -15,8 +15,6 @@ public class Score : MonoBehaviour
     public void addPoints(int points)
     {
         playerPoints += points;
-
-        PlayerPrefs.SetString("Points", playerPoints.ToString());
     }
 
     void OnGUI()

@@ -6,21 +6,15 @@ public class Lives : MonoBehaviour
 {
     private int playerLives;
     public Font font;
+
     void Start()
     {
         playerLives = PlayerPrefs.GetInt("Lives");
     }
 
-    public bool TakeLife()
+    public void TakeLife()
     {
         playerLives--;
-
-        if (playerLives <= 0)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     void OnGUI()
