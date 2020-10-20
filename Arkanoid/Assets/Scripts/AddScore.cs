@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class AddScore : MonoBehaviour
 {
-    private HighScores highScores;
-
     public void addHighScoreEntry(string name, int round, int score)
     {
+        HighScores highScores;
         HighScoreEntry highScoreEntry = new HighScoreEntry { name = name, round = round, score = score };
 
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
@@ -24,7 +23,7 @@ public class AddScore : MonoBehaviour
 
         highScores.highScoreEntryList.Add(highScoreEntry);
 
-        sortScore(highScores);
+        highScores = sortScore(highScores);
 
         if (highScores.highScoreEntryList.Count > 5)
         {
@@ -37,17 +36,14 @@ public class AddScore : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void sortScore(HighScores highScores)
+    public HighScores sortScore(HighScores highScores)
     {
         highScores.highScoreEntryList.Sort(delegate (HighScoreEntry x, HighScoreEntry y)
         {
             if (x.score.CompareTo(y.score) == 0) return x.name.CompareTo(y.name);
             return x.score.CompareTo(y.score) * -1;
         });
-    }
 
-    public HighScores getHighScores()
-    {
         return highScores;
     }
 }

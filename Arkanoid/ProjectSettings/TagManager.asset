@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destructible
   - Indestructible
+  - Platform
   layers:
   - Default
   - TransparentFX

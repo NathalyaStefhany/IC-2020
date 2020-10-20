@@ -23,7 +23,7 @@ public class HighScoreTable : MonoBehaviour
 
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
 
-        if (string.IsNullOrEmpty(jsonString) == false)
+        if (!string.IsNullOrEmpty(jsonString))
         {
             HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
 
