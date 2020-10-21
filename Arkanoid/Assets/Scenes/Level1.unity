@@ -2976,7 +2976,7 @@ GameObject:
   - component: {fileID: 1235275466}
   m_Layer: 0
   m_Name: Blocks
-  m_TagString: Untagged
+  m_TagString: Blocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4734,6 +4734,11 @@ PrefabInstance:
     - target: {fileID: 6835778094933150092, guid: c4d395b3fb403de41b55960b03989aae,
         type: 3}
       propertyPath: m_Name
+      value: SceneControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835778094933150092, guid: c4d395b3fb403de41b55960b03989aae,
+        type: 3}
+      propertyPath: m_TagString
       value: SceneControl
       objectReference: {fileID: 0}
     - target: {fileID: 6835778094933150094, guid: c4d395b3fb403de41b55960b03989aae,
