@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -12,9 +13,9 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestCameraExists()
         {
-            SceneManager.LoadScene("Menu");
+            EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity");
 
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
 
             Assert.IsTrue(GameObject.Find("Main Camera"), "Camera não encontrada!");
         }
