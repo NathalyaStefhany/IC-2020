@@ -31,6 +31,9 @@ public class GameOverControl : MonoBehaviour
             int round = Convert.ToInt32(PlayerPrefs.GetString("Level"));
             int points = score.getPlayerPoints();
 
+            PlayerPrefs.SetInt("Lives", 3);
+            PlayerPrefs.SetInt("CurrentScore", 0);
+
             addScore.addHighScoreEntry(name, round, points);
 
             Block.destructibleBlockNum = 0;

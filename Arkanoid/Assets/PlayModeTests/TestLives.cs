@@ -50,6 +50,8 @@ namespace Tests
 
             while (numberLives != 0 && cont <= 100)
             {
+                lives = GameObject.FindObjectOfType<Lives>();
+
                 yield return new WaitForSeconds(0.1f);
 
                 numberLives = lives.getPlayerLives();
@@ -59,8 +61,14 @@ namespace Tests
 
             int newIdScene = SceneManager.GetActiveScene().buildIndex;
 
-            Assert.AreEqual(0, numberLives);
             Assert.AreEqual(7, newIdScene);
+        }
+
+        [TearDown]
+        public void tearDown()
+        {
+            PlayerPrefs.SetInt("Lives", 3);
+            PlayerPrefs.SetInt("CurrentScore", 0);
         }
     }
 }

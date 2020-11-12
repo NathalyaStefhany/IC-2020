@@ -29,6 +29,8 @@ namespace Tests
         public void tearDown()
         {
             Block.destructibleBlockNum = 0;
+
+            PlayerPrefs.SetInt("CurrentScore", 0);
         }
     }
 }
