@@ -11,7 +11,7 @@ namespace Tests
     public class TestCamera
     {
         [UnityTest]
-        public IEnumerator TestCameraExists()
+        public IEnumerator testCameraExists()
         {
             EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity");
 
