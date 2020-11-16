@@ -67,6 +67,8 @@ namespace Tests
         [TearDown]
         public void tearDown()
         {
+            Block.destructibleBlockNum = 0;
+
             PlayerPrefs.SetInt("Lives", 3);
             PlayerPrefs.SetInt("CurrentScore", 0);
         }

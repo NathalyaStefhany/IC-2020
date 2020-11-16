@@ -9,10 +9,22 @@ namespace Tests
 {
     public class TestLoadScenes
     {
-        [SetUp]
-        public void setUp()
+        [UnitySetUp]
+        public IEnumerator setUp()
         {
             SceneManager.LoadScene("LevelTest");
+
+            yield return new WaitForSeconds(1);
+
+            GameObject block = GameObject.FindGameObjectWithTag("Destructible");
+
+            Platform platform = GameObject.FindObjectOfType<Platform>();
+            platform.AutoPlay = true;
+
+            Ball ball = GameObject.FindObjectOfType<Ball>();
+            
+            ball.transform.position = new Vector2(block.transform.position.x - 0.3f, platform.transform.position.y);
+            ball.ThrowBall();
         }
 
         [UnityTest]

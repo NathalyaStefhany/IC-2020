@@ -30,10 +30,15 @@ public class Ball : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                rb2d.velocity = new Vector2(2f, 10f);
-                gameStarted = true;
+                ThrowBall();
             }
         }
+    }
+
+    public void ThrowBall()
+    {
+        rb2d.velocity = new Vector2(2f, 10f);
+        gameStarted = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

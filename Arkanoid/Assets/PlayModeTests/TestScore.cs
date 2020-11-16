@@ -9,10 +9,18 @@ namespace Tests
 {
     public class TestScore
     {
-        [SetUp]
-        public void SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
             SceneManager.LoadScene("LevelTestScore");
+
+            yield return new WaitForSeconds(1);
+
+            Platform platform = GameObject.FindObjectOfType<Platform>();
+            platform.AutoPlay = true;
+
+            Ball ball = GameObject.FindObjectOfType<Ball>();
+            ball.ThrowBall();
         }
 
         [UnityTest]
@@ -60,7 +68,14 @@ namespace Tests
         {
             Score score = GameObject.FindObjectOfType<Score>();
 
-            yield return new WaitForSeconds(20);
+            GameObject[] blocks = GameObject.FindGameObjectsWithTag("Destructible");
+
+            while(blocks.Length != 0)
+            {
+                yield return new WaitForSeconds(0.1f);
+
+                blocks = GameObject.FindGameObjectsWithTag("Destructible");
+            }
 
             Assert.AreEqual(100, score.getPlayerPoints());
         }

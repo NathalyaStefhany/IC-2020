@@ -18,6 +18,8 @@ public class Block : MonoBehaviour
     private Score score;
     private AudioSource audioSource;
 
+    public static bool hit = false;
+
     void Start()
     {
         sceneControl = FindObjectOfType<SceneControl>();
@@ -42,6 +44,8 @@ public class Block : MonoBehaviour
 
             Damage();
         }
+        else
+            hit = true;
     }
 
     private void Damage()
