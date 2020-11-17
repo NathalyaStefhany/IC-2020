@@ -9,6 +9,10 @@ namespace Tests
 {
     public class TestScore
     {
+        private Ball ball;
+        private Platform platform;
+        private Block[] blocks;
+
         [UnitySetUp]
         public IEnumerator SetUp()
         {
@@ -16,19 +20,31 @@ namespace Tests
 
             yield return new WaitForSeconds(1);
 
-            Platform platform = GameObject.FindObjectOfType<Platform>();
+            blocks = GameObject.FindObjectsOfType<Block>();
+
+            platform = GameObject.FindObjectOfType<Platform>();
             platform.AutoPlay = true;
 
-            Ball ball = GameObject.FindObjectOfType<Ball>();
-            ball.ThrowBall();
+            ball = GameObject.FindObjectOfType<Ball>();
         }
 
         [UnityTest]
         public IEnumerator TestScoreWhenDestroyOneYellowBlock()
         {
+            foreach (Block block in blocks)
+            {
+                if (block.points == 10)
+                {
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    break;
+                }
+            }
+
             Score score = GameObject.FindObjectOfType<Score>();
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(10, score.getPlayerPoints());
         }
@@ -36,9 +52,18 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestScoreWhenDestroyTwoYellowBlocks()
         {
-            Score score = GameObject.FindObjectOfType<Score>();
+            foreach (Block block in blocks)
+            {
+                if (block.points == 10)
+                {
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
 
-            yield return new WaitForSeconds(5);
+                    yield return new WaitForSeconds(1);
+                }
+            }
+
+            Score score = GameObject.FindObjectOfType<Score>();
 
             Assert.AreEqual(20, score.getPlayerPoints());
         }
@@ -46,9 +71,25 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestScoreWhenDestroyOnePinkBlock()
         {
+            foreach (Block block in blocks)
+            {
+                if (block.points == 30)
+                {
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    yield return new WaitForSeconds(1);
+
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    break;
+                }
+            }
+
             Score score = GameObject.FindObjectOfType<Score>();
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(30, score.getPlayerPoints());
         }
@@ -56,9 +97,30 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestScoreWhenDestroyOneBlueBlock()
         {
+            foreach (Block block in blocks)
+            {
+                if (block.points == 50)
+                {
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    yield return new WaitForSeconds(1);
+
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    yield return new WaitForSeconds(1);
+
+                    ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                    ball.ThrowBall();
+
+                    break;
+                }
+            }
+
             Score score = GameObject.FindObjectOfType<Score>();
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(50, score.getPlayerPoints());
         }
@@ -66,16 +128,32 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestScoreWhenDestroyAllBlocks()
         {
-            Score score = GameObject.FindObjectOfType<Score>();
+            int num;
 
-            GameObject[] blocks = GameObject.FindGameObjectsWithTag("Destructible");
+            Block.destructibleBlockNum = 100;
 
-            while(blocks.Length != 0)
+            foreach (Block block in blocks)
             {
-                yield return new WaitForSeconds(0.1f);
+                if (block.tag == "Destructible")
+                {
+                    if (block.points == 10)
+                        num = 1;
+                    else if (block.points == 30)
+                        num = 2;
+                    else
+                        num = 3;
 
-                blocks = GameObject.FindGameObjectsWithTag("Destructible");
+                    for(int i = 0; i < num; i++)
+                    {
+                        ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
+                        ball.ThrowBall();
+
+                        yield return new WaitForSeconds(1);
+                    }
+                }
             }
+
+            Score score = GameObject.FindObjectOfType<Score>();
 
             Assert.AreEqual(100, score.getPlayerPoints());
         }
@@ -83,6 +161,8 @@ namespace Tests
         [TearDown]
         public void TearDown()
         {
+            Block.destructibleBlockNum = 0;
+
             PlayerPrefs.SetInt("Lives", 3);
             PlayerPrefs.SetInt("CurrentScore", 0);
         }
