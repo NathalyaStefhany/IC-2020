@@ -30,7 +30,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator testLoadSceneLevel2()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
 
             int idScene = SceneManager.GetActiveScene().buildIndex;
 

@@ -9,10 +9,20 @@ namespace Tests
 {
     public class TestLives
     {
-        [SetUp]
-        public void setUp()
+        private Ball ball;
+
+        [UnitySetUp]
+        public IEnumerator setUp()
         {
             SceneManager.LoadScene("LevelTest");
+
+            yield return new WaitForSeconds(1);
+
+            GameObject platform = GameObject.FindGameObjectWithTag("Platform");
+
+            ball = GameObject.FindObjectOfType<Ball>();
+
+            ball.ThrowBall();
         }
 
         [UnityTest]
@@ -45,22 +55,24 @@ namespace Tests
         {
             Lives lives = GameObject.FindObjectOfType<Lives>();
 
-            int numberLives = lives.getPlayerLives();
             int cont = 0;
 
-            while (numberLives != 0 && cont <= 100)
+            while (cont < 2)
             {
-                lives = GameObject.FindObjectOfType<Lives>();
+                yield return new WaitForSeconds(2.5f);
 
-                yield return new WaitForSeconds(0.1f);
-
-                numberLives = lives.getPlayerLives();
+                ball = GameObject.FindObjectOfType<Ball>();
+                ball.ThrowBall();
 
                 cont++;
             }
 
+            yield return new WaitForSeconds(2.5f);
+
+            int numberLives = lives.getPlayerLives();
             int newIdScene = SceneManager.GetActiveScene().buildIndex;
 
+            Assert.AreEqual(0, numberLives);
             Assert.AreEqual(7, newIdScene);
         }
 

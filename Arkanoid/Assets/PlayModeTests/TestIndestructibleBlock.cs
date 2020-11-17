@@ -9,16 +9,28 @@ namespace Tests
 {
     public class TestIndestructibleBlock
     {
-        [SetUp]
-        public void SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
             SceneManager.LoadScene("LevelTestScore");
+
+            yield return new WaitForSeconds(1);
+
+            GameObject block = GameObject.FindGameObjectWithTag("Indestructible");
+
+            Platform platform = GameObject.FindObjectOfType<Platform>();
+            platform.AutoPlay = true;
+
+            Ball ball = GameObject.FindObjectOfType<Ball>();
+
+            ball.transform.position = new Vector2(block.transform.position.x - 0.3f, platform.transform.position.y);
+            ball.ThrowBall();
         }
 
         [UnityTest]
         public IEnumerator TestBlockIsNotDestroyed()
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
 
             GameObject indestructibleBlock = GameObject.FindGameObjectWithTag("Indestructible");
 
