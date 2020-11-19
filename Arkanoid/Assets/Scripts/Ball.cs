@@ -11,6 +11,14 @@ public class Ball : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [SerializeField]
+    private IDamage damage;
+
+    void Awake()
+    {
+        damage = Instantiate(damage, transform);
+    }
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -30,6 +38,9 @@ public class Ball : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                IDamage normalDamage = GameObject.FindObjectOfType<NormalDamage>();
+                setDamage(normalDamage);
+
                 ThrowBall();
             }
         }
@@ -50,10 +61,22 @@ public class Ball : MonoBehaviour
 
             audioSource.Play();
         }
+        else if (collision.gameObject.CompareTag("Destructible"))
+        {
+            AudioSource audioBlock = collision.gameObject.GetComponent<AudioSource>();
+            AudioSource.PlayClipAtPoint(audioBlock.clip, transform.position);
+            
+            damage.Damage(collision.gameObject);
+        }
     }
 
     public void setGameStarted(bool gameStarted)
     {
         this.gameStarted = gameStarted;
+    }
+
+    public void setDamage(IDamage damage)
+    {
+        this.damage = damage;
     }
 }

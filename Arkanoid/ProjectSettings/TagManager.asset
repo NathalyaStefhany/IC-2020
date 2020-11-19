@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - SceneControl
   - Blocks
+  - PowerUp
   layers:
   - Default
   - TransparentFX

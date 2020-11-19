@@ -6,9 +6,9 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     [SerializeField]
-    private Sprite[] sprites;
+    public Sprite[] sprites;
 
-    private int numHits;
+    private int numHits;  
     public static int destructibleBlockNum = 0;
 
     public int points;
@@ -38,39 +38,11 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (transform.CompareTag("Destructible"))
-        {
-            AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-
-            Damage();
-        }
-        else
+        if (transform.CompareTag("Indestructible"))
             hit = true;
     }
-
-    private void Damage()
-    {
-        numHits++;
-
-        int maxHits = sprites.Length + 1;
-
-        if (numHits >= maxHits)
-        {
-            destructibleBlockNum--;
-
-            score.addPoints(points);
-
-            sceneControl.DestroyedBlock();
-
-            Destroy(gameObject);
-        }
-        else
-        {
-            LoadSprite();
-        }
-    }
-
-    private void LoadSprite()
+   
+    public void LoadSprite()
     {
         int spriteIndex = numHits - 1;
 
@@ -78,5 +50,15 @@ public class Block : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[spriteIndex];
         }
+    }
+
+    public void SetNumHits()
+    {
+        numHits++;
+    }
+
+    public int GetNumHits()
+    {
+        return numHits;
     }
 }
