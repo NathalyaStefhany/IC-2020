@@ -41,10 +41,9 @@ namespace Tests
                     break;
                 }
             }
+            yield return new WaitForSeconds(0.5f);
 
             Score score = GameObject.FindObjectOfType<Score>();
-
-            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(10, score.getPlayerPoints());
         }
@@ -59,7 +58,7 @@ namespace Tests
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
 
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
 
@@ -78,18 +77,18 @@ namespace Tests
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
 
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(0.5f);
 
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
+
+                    yield return new WaitForSeconds(0.5f);
 
                     break;
                 }
             }
 
             Score score = GameObject.FindObjectOfType<Score>();
-
-            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(30, score.getPlayerPoints());
         }
@@ -104,23 +103,23 @@ namespace Tests
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
 
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(0.5f);
 
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
 
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(0.5f);
 
                     ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                     ball.ThrowBall();
+
+                    yield return new WaitForSeconds(0.5f);
 
                     break;
                 }
             }
 
             Score score = GameObject.FindObjectOfType<Score>();
-
-            yield return new WaitForSeconds(1);
 
             Assert.AreEqual(50, score.getPlayerPoints());
         }
@@ -148,7 +147,7 @@ namespace Tests
                         ball.transform.position = new Vector2(block.transform.position.x - 0.5f, platform.transform.position.y);
                         ball.ThrowBall();
 
-                        yield return new WaitForSeconds(1);
+                        yield return new WaitForSeconds(0.5f);
                     }
                 }
             }

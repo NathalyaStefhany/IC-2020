@@ -37,6 +37,16 @@ namespace Tests
             Assert.AreEqual(5, idScene);
         }
 
+        [UnityTest]
+        public IEnumerator testWhenNextLevelLoadPointsContinue()
+        {
+            yield return new WaitForSeconds(1);
+
+            Score score = GameObject.FindObjectOfType<Score>();
+
+            Assert.AreEqual(10, score.getPlayerPoints());
+        }
+
         [TearDown]
         public void tearDown()
         {

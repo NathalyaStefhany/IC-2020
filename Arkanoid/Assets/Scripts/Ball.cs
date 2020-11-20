@@ -36,13 +36,12 @@ public class Ball : MonoBehaviour
         {
             transform.position = platform.transform.position + platformBallDis;
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                IDamage normalDamage = GameObject.FindObjectOfType<NormalDamage>();
-                setDamage(normalDamage);
+            IDamage normalDamage = GameObject.FindObjectOfType<NormalDamage>();
+   
+            setDamage(normalDamage);
 
+            if (Input.GetMouseButtonDown(0)) 
                 ThrowBall();
-            }
         }
     }
 
