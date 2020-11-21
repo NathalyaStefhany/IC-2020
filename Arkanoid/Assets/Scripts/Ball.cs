@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private IDamage damage;
+    private Damage damage;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour
         {
             transform.position = platform.transform.position + platformBallDis;
 
-            IDamage normalDamage = GameObject.FindObjectOfType<NormalDamage>();
+            Damage normalDamage = GameObject.FindObjectOfType<NormalDamage>();
    
             setDamage(normalDamage);
 
@@ -65,7 +65,7 @@ public class Ball : MonoBehaviour
             AudioSource audioBlock = collision.gameObject.GetComponent<AudioSource>();
             AudioSource.PlayClipAtPoint(audioBlock.clip, transform.position);
             
-            damage.Damage(collision.gameObject);
+            damage.ExecuteDamage(collision.gameObject);
         }
     }
 
@@ -74,7 +74,7 @@ public class Ball : MonoBehaviour
         this.gameStarted = gameStarted;
     }
 
-    public void setDamage(IDamage damage)
+    public void setDamage(Damage damage)
     {
         this.damage = damage;
     }

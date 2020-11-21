@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamagePowerUp : MonoBehaviour
 {
     [SerializeField]
-    IDamage damage;
+    Damage damage;
 
     private AudioSource audioSource;
 
