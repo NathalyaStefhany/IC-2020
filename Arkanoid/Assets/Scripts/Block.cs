@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Block : MonoBehaviour, Observable
 {
     [SerializeField]
     public Sprite[] sprites;
@@ -20,8 +20,12 @@ public class Block : MonoBehaviour
 
     public static bool hit = false;
 
-    void Start()
+    List<Observer> observers;
+
+    void Awake()
     {
+        observers = new List<Observer>();
+
         sceneControl = FindObjectOfType<SceneControl>();
         score = FindObjectOfType<Score>();
 
@@ -49,6 +53,26 @@ public class Block : MonoBehaviour
         if (sprites[spriteIndex])
         {
             spriteRenderer.sprite = sprites[spriteIndex];
+        }
+    }
+
+    public void DestroyBlock()
+    {
+        Notify(this);
+
+        Destroy(this.gameObject);
+    }
+
+    public void RegisterObserver(Observer obs)
+    {
+        observers.Add(obs);
+    }
+
+    public void Notify(object observable)
+    {
+        foreach(var observer in observers)
+        {
+            observer.update(this);
         }
     }
 

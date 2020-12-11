@@ -142,8 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd11266293fd4b74e8919d83c41d662e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
-  points: 0
+  sprites:
+  - {fileID: 21300002, guid: 36c4d90cd9b8eac44aaa3f871731c84f, type: 3}
+  - {fileID: 21300002, guid: 36c4d90cd9b8eac44aaa3f871731c84f, type: 3}
+  - {fileID: 21300004, guid: 36c4d90cd9b8eac44aaa3f871731c84f, type: 3}
+  points: 100
 --- !u!82 &6913113246617357261
 AudioSource:
   m_ObjectHideFlags: 0

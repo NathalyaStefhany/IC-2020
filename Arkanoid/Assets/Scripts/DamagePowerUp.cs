@@ -20,7 +20,7 @@ public class DamagePowerUp : MonoBehaviour
         ball.setDamage(Instantiate(damage, transform));
 
         AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-        
+
         Destroy(gameObject);        
     }
 }

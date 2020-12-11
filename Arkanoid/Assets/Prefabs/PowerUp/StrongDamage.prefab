@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53dc82718dd1e0b4188181c30cd3bba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgPopUpTxtVFX: {fileID: 1638953889132672124, guid: 53989218792f15445a629eb5f8a393b5,
+    type: 3}

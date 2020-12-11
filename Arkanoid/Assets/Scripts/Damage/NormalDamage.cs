@@ -5,12 +5,10 @@ using UnityEngine;
 public class NormalDamage : Damage
 {
     private SceneControl sceneControl;
-    private Score score;
 
     public override void ExecuteDamage(GameObject goBlock)
     {
         sceneControl = FindObjectOfType<SceneControl>();
-        score = FindObjectOfType<Score>();
 
         Block block = goBlock.GetComponent<Block>();
 
@@ -22,15 +20,11 @@ public class NormalDamage : Damage
         {
             Block.destructibleBlockNum--;
 
-            score.addPoints(block.points);
-
-            //codigo para o efeito do pop up text
             popUpDMGVFX(block);
-            //------------//
+
+            block.DestroyBlock();
 
             sceneControl.DestroyedBlock();
-
-            GameObject.Destroy(goBlock);
         }
         else
         {

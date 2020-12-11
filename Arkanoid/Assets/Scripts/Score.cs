@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+public class Score : MonoBehaviour, Observer
 {
     private int playerPoints;
     public Font font;
+   
+    Observable[] observables;
 
     void Start()
     {
         playerPoints = PlayerPrefs.GetInt("CurrentScore");
+    
+        observables = GameObject.FindObjectsOfType<Block>();
+       
+        foreach (Observable obs in observables)
+            obs.RegisterObserver(this);
     }
 
-    public void addPoints(int points)
+    public void update(object observable)
     {
-        playerPoints += points;
+        Block block = (Block)observable;
+
+        playerPoints += block.points;
     }
 
     void OnGUI()
