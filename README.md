@@ -3,6 +3,10 @@
 # Arkanoid
 Diretório destinado ao projeto da Iniciação Científica "Desenvolvimento de um jogo no Unity com TDD".
 
+<p align="center">
+  <img src="Arkanoid.png">
+</p>
+
 ## Descrição
 O objetivo do projeto é analisar onde e como aplicar Test Driven Development (TDD) no jogo Arkanoid. O projeto está sendo desenvolvindo na linguagem C#, utilizando a game engine Unity e IDE Microsoft Visual Studio.
 
