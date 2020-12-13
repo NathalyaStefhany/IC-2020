@@ -8,8 +8,8 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  readmeWorkflow:
-    name: Readme Workflow
+  build:
+    name: Arkanoid Build
     runs-on: ubuntu-latest
     steps:
     
@@ -23,20 +23,20 @@ jobs:
       - uses: actions/cache@v1.1.0
         with:
           path: Arkanoid/Library
-          key: Library
+          key: Arkanoid/Library
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
+        uses: webbertakken/unity-test-runner@v1.7
         with:
-          unityVersion: 2018.4.18f1
+          unityVersion: 2019.4.14f1
 
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: Arkanoid
-          unityVersion: 2018.4.18f1
+          unityVersion: 2019.4.14f1
           targetPlatform: StandaloneWindows64
 
       # Output
