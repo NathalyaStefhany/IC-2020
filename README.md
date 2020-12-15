@@ -1,4 +1,4 @@
-![Actions](https://github.com/NathalyaStefhany/IC-2020/workflows/Actions/badge.svg?branch=master)
+[![Actions](https://github.com/NathalyaStefhany/IC-2020/workflows/Actions/badge.svg)](https://github.com/NathalyaStefhany/IC-2020/actions)
 
 # Arkanoid
 Diretório destinado ao projeto da Iniciação Científica "Desenvolvimento de um jogo no Unity com TDD".
