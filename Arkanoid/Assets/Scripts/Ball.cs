@@ -47,6 +47,8 @@ public class Ball : MonoBehaviour
 
     public void ThrowBall()
     {
+        rb2d = GetComponent<Rigidbody2D>();
+
         rb2d.velocity = new Vector2(2f, 10f);
         gameStarted = true;
     }
@@ -74,8 +76,18 @@ public class Ball : MonoBehaviour
         this.gameStarted = gameStarted;
     }
 
+    public bool getGameStarted()
+    {
+        return this.gameStarted;
+    }
+
     public void setDamage(Damage damage)
     {
         this.damage = damage;
+    }
+
+    public void setPlatformBallDis(Vector3 platformBallDis)
+    {
+        this.platformBallDis = platformBallDis;
     }
 }

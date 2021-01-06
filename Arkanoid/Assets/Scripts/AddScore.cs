@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddScore : MonoBehaviour
+public class AddScore 
 {
     public void addHighScoreEntry(string name, int round, int score)
     {
         HighScores highScores;
         HighScoreEntry highScoreEntry = new HighScoreEntry { name = name, round = round, score = score };
-
+        
         string jsonString = PlayerPrefs.GetString("HighScoreTable");
         string json;
 
@@ -43,7 +43,7 @@ public class AddScore : MonoBehaviour
             if (x.score.CompareTo(y.score) == 0) return x.name.CompareTo(y.name);
             return x.score.CompareTo(y.score) * -1;
         });
-
+        
         return highScores;
     }
 }

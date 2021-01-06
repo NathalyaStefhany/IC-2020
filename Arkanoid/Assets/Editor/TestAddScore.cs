@@ -18,7 +18,7 @@ namespace Tests
         {
             EditorSceneManager.OpenScene("Assets/Scenes/Level1.unity");
 
-            addScore = GameObject.FindObjectOfType<AddScore>();
+            addScore = new AddScore();
 
             highScoreEntry1 = new HighScoreEntry { name = "NATH", round = 1, score = 1500 };
             highScoreEntry2 = new HighScoreEntry { name = "JOAO", round = 2, score = 3000 };

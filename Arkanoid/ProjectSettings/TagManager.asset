@@ -10,6 +10,7 @@ TagManager:
   - SceneControl
   - Blocks
   - PowerUp
+  - PowerUpMultiBalls
   layers:
   - Default
   - TransparentFX
