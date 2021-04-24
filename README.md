@@ -8,7 +8,13 @@ Diretório destinado ao projeto da Iniciação Científica "Aplicando Engenharia
 </p>
 
 ## Descrição
-O objetivo do projeto é analisar onde e como aplicar Test Driven Development (TDD) no jogo Arkanoid. O projeto está sendo desenvolvindo na linguagem C#, utilizando a game engine Unity e IDE Microsoft Visual Studio.
+O objetivo do projeto é analisar onde e como aplicar técnicas da engenharia de software moderna como:
+- Padrões de Projeto.
+- Testes de Unidade.
+- Versionamento.
+- Integração Contínua.
+
+O projeto está sendo desenvolvindo na linguagem C#, utilizando a game engine Unity e IDE Microsoft Visual Studio.
 
 ## Funcionalidades
 A aplicação conta com algumas funcionalidades já implementadas:
