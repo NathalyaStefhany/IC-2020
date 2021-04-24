@@ -1,7 +1,7 @@
 [![Actions](https://github.com/NathalyaStefhany/IC-2020/workflows/Actions/badge.svg)](https://github.com/NathalyaStefhany/IC-2020/actions)
 
 # Arkanoid
-Diretório destinado ao projeto da Iniciação Científica "Desenvolvimento de um jogo no Unity com TDD".
+Diretório destinado ao projeto da Iniciação Científica "Aplicando Engenharia de Software no Desenvolvimento de Jogos Digitais".
 
 <p align="center">
   <img src="Arkanoid.png">
