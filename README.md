@@ -8,7 +8,8 @@ Diretório destinado ao projeto da Iniciação Científica "Aplicando Engenharia
 </p>
 
 ## Descrição
-O objetivo do projeto é analisar onde e como aplicar técnicas da engenharia de software moderna como:
+O objetivo do projeto é aplicar técnicas da engenharia de software moderna como:
+
 - Padrões de Projeto.
 - Testes de Unidade.
 - Versionamento.
