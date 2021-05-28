@@ -1,4 +1,5 @@
 [![Actions](https://github.com/NathalyaStefhany/IC-2020/workflows/Actions/badge.svg)](https://github.com/NathalyaStefhany/IC-2020/actions)
+[![Arkanoid_Do](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity)](https://simmer.io/@phillima/arkanoid)
 
 # Arkanoid
 Diretório destinado ao projeto da Iniciação Científica "Aplicando Engenharia de Software no Desenvolvimento de Jogos Digitais".
