@@ -32,6 +32,7 @@ As seguintes ferramentas estão sendo utilizadas na construção do projeto:
 - [Unity Test Runner](https://docs.unity3d.com/2017.4/Documentation/Manual/testing-editortestsrunner.html)
 - [NUnit](https://nunit.org/)
 - [Github Actions](https://github.com/features/actions)
+- [NSubstitute](https://github.com/nsubstitute/nsubstitute)
 
 ## Como utilizar?
 ### Requisito
@@ -42,6 +43,20 @@ Clone este repositório na sua máquina local.
 ```sh
 git clone https://github.com/NathalyaStefhany/IC-2020.git
 ```
+
+### Adicionar as depêndencias do NSubstitute
+Como a biblioteca NSubstitute não é gerenciada pelo Unity Package Manager, será necessário adicionar as depêndencias manualmente. O repositório já contém os arquivos necessários. 
+- Acesse o diretório PlayModeTests.
+- Abra o arquivo PlayModeTests.asmdef no Inspector
+- Adicione as 3 dependências conforme a Figura abaixo:
+  - Castle.Core.dll
+  - NSubstitute.dll
+  - System.Threading.Tasks.Extensions.dll
+
+<p align="center">
+  <img src="nsubstitute.png">
+</p>
+
 
 ### Unity
 - Abra o projeto no Unity.
