@@ -27,16 +27,16 @@ jobs:
 
       # Test
       - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.7
+        uses: webbertakken/unity-test-runner@v2
         with:
-          unityVersion: 2019.4.14f1
+          unityVersion: 2020.3.3f1
 
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
         with:
           projectPath: Arkanoid
-          unityVersion: 2019.4.14f1
+          unityVersion: 2020.3.3f1
           targetPlatform: StandaloneWindows64
 
       # Output
