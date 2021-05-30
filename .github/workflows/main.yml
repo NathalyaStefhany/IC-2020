@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      # Checkout
-      - name: Checkout repository
+     # Checkout
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           lfs: true
-    
+      
       # Cache
-      - uses: actions/cache@v1.1.0
+      - uses: actions/cache@v2
         with:
           path: Arkanoid/Library
           key: Arkanoid/Library
