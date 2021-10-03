@@ -2,7 +2,8 @@
 [![Arkanoid_Do](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity)](https://simmer.io/@phillima/arkanoid)
 
 # Arkanoid
-Diretório destinado ao projeto da Iniciação Científica "Aplicando Engenharia de Software no Desenvolvimento de Jogos Digitais".
+
+Repository dedicated to the project "Towards Automated Playtesting in Game Development"
 
 <p align="center">
   <img src="Arkanoid.png">
